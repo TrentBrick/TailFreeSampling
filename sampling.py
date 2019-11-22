@@ -11,7 +11,6 @@ def tail_free(logits, z, temperature=1.0):
     """
     logits = logits / tf.to_float(temperature)
     sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
-    #indices = tf.argsort(logits, direction='DESCENDING', axis=1)
     grad = sps[:,1:]-sps[:,:-1] # first derivative
     grad = grad[:,1:]-grad[:,:-1] #this is the 2nd derivative
 
